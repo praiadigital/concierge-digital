@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Concierge Digital — FAQ do hóspede | Praia Digital</title>
+<meta name="description" content="Central de ajuda do hóspede: Wi-Fi, check-in, regras da casa e dicas locais — reduza mensagens repetitivas em 80%.">
+<link rel="canonical" href="https://praia.digital/concierge-digital/">
+<meta name="robots" content="index, follow">
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif}
+body{margin:0;background:#0f172a;color:#e2e8f0;min-height:100vh}
+.wrap{max-width:680px;margin:0 auto;padding:40px 20px}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid #334155;background:#1e293b;color:#e2e8f0;font-size:16px;box-sizing:border-box}
+.faq{background:#1e293b;border:1px solid #334155;border-radius:12px;margin-top:10px;overflow:hidden}
+.faq summary{padding:14px 16px;cursor:pointer;font-weight:600;list-style:none}
+.faq summary::before{content:'▸ ';color:#38bdf8}
+.faq[open] summary::before{content:'▾ '}
+.faq div{padding:0 16px 14px;font-size:14px;opacity:.85;line-height:1.6}
+.card{background:#1e293b;border:1px solid #334155;border-radius:16px;padding:24px;margin-top:20px}
+.btn{display:inline-block;margin-top:16px;padding:12px 18px;border-radius:12px;background:#0ea5e9;color:#fff;text-decoration:none;font-weight:700}
+small{opacity:.6}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🤝 Concierge Digital</h1>
+  <p>A central que responde o hóspede antes dele perguntar. Busque ou navegue pelas categorias.</p>
+  <input id="busca" placeholder="Buscar... (ex.: wifi, check-in, churrasqueira)" oninput="filtrar()">
+  <div id="lista"></div>
+  <div class="card">
+    <h2>📞 Ainda precisa de ajuda?</h2>
+    <p>Fale com o anfitrião pelo WhatsApp — resposta média em 15 minutos.</p>
+    <a class="btn" href="https://wa.me/5511954346288">Chamar no WhatsApp</a>
+  </div>
+  <small>Anfitriões: automatize essas respostas com os Hermes Agents.</small><br>
+  <a class="btn" href="https://praiadigital.github.io/hermes-agents/">Hermes Agents</a>
+  <a class="btn" href="https://praiadigital.github.io/area-anfitriao/">Área do Anfitrião</a>
+  <a class="btn" href="https://praiadigital.github.io/guia-praias/">Guia de Praias</a>
+</div>
+<script>
+const faqs=[
+ ['📶 Wi-Fi','Rede: PraiaDigital_5G · Senha: verão2026. O roteador fica na sala; se cair, reinicie tirando da tomada por 10s.'],
+ ['🔑 Check-in / Check-out','Check-in a partir das 14h, check-out até 11h. Chaves no cofre ao lado da porta — código enviado no dia.'],
+ ['🍖 Churrasqueira','Uso mediante reserva na portaria. Carvão não incluso. Limpeza após o uso é obrigatória.'],
+ ['🐾 Pets','Aceitamos pets de pequeno porte (até 10kg) com taxa de R$ 80/estadia. Veja nosso guia pet-friendly.'],
+ ['🅿️ Estacionamento','1 vaga coberta e demarcada (nº 42). Visitantes usam as vagas rotativas do térreo.'],
+ ['🗑️ Lixo','Coleta terça, quinta e sábado. Lixeiras na área de serviço; descarte no hall do andar.'],
+ ['🏖️ Praia mais próxima','350m a pé pela Rua das Palmeiras. Cadeiras e guarda-sol disponíveis no armário do corredor.'],
+ ['🛒 Mercado e farmácia','Mercado Extra a 600m (aberto até 22h). Farmácia 24h na Av. da Praia, 1200.'],
+ ['🚨 Emergências','SAMU 192 · Bombeiros 193 · Polícia 190. Contato do zelador: (13) 99999-0000.'],
+ ['⭐ Regras da casa','Sem festas após 22h. Silêncio nas áreas comuns. Máximo de hóspedes conforme reserva.']
+];
+function render(list){
+  document.getElementById('lista').innerHTML=list.map(f=>'<details class="faq"><summary>'+f[0]+'</summary><div>'+f[1]+'</div></details>').join('')||'<p style="opacity:.6;margin-top:16px">Nenhum resultado. Tente outra palavra.</p>';
+}
+function filtrar(){
+  const q=document.getElementById('busca').value.toLowerCase();
+  render(faqs.filter(f=>!q||f[0].toLowerCase().includes(q)||f[1].toLowerCase().includes(q)));
+}
+render(faqs);
+</script>
+<hr style="margin:40px 0 20px;border:none;border-top:1px solid #334155">
+<nav style="font-size:.95em;text-align:center;padding:0 16px 32px;color:#94a3b8">
+<strong>Rede Praia Digital:</strong><br>
+<a style="color:#94a3b8" href="https://praia.digital/">Praia Digital</a> ·
+<a style="color:#94a3b8" href="https://praiadigital.github.io/apps/">Todos os apps</a> ·
+<a style="color:#94a3b8" href="https://praiadigital.github.io/hermes-agents/">Hermes Agents</a> ·
+<a style="color:#94a3b8" href="https://praiadigital.github.io/area-anfitriao/">Área do Anfitrião</a> ·
+<a style="color:#94a3b8" href="https://praiadigital.github.io/temporada-pets/">Temporada Pets</a> ·
+<a style="color:#94a3b8" href="https://praiadigital.github.io/checklist-vistoria/">Checklist de Vistoria</a> ·
+<a style="color:#94a3b8" href="https://praiadigital.github.io/long-stay/">Long Stay</a>
+</nav>
+</body>
+</html>
